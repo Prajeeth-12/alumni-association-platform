@@ -19,7 +19,6 @@
     "type": "git",
     "url": "https://github.com/yourusername/alumni-association-platform.git"
   },
-  "homepage": "https://prajeeth-12.github.io/alumni-association-platform",
   "type": "module",
   "scripts": {
     "dev": "vite",
