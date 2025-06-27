@@ -14,11 +14,11 @@ const Footer = () => {
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex-center">
                 <AcademicCapIcon className="h-5 w-5 text-white" />
               </div>
-              <span className="font-semibold text-xl text-gray-900">AlumniConnect</span>
+              <span className="font-semibold text-xl text-gray-900">St. Joseph's Alumni</span>
             </div>
             <p className="body-text">
-              Connecting graduates worldwide. Building careers, fostering relationships, 
-              and creating opportunities for lifelong success.
+              Connecting Josephites across Tamil Nadu and beyond. Building careers, fostering relationships, 
+              and creating opportunities for lifelong success since 1844.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-gray-200 mt-8 pt-8 text-center">
           <div className="text-gray-600 text-sm">
-            © {currentYear} AlumniConnect. All rights reserved.
+            © {currentYear} St. Joseph's College (Autonomous), Chennai. All rights reserved.
           </div>
         </div>
       </div>

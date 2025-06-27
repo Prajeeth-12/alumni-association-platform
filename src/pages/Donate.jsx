@@ -14,7 +14,7 @@ const Donate = () => {
 
   const handleDonationSubmit = (formData) => {
     // Simulate donation processing
-    alert(`Thank you for your donation of $${formData.amount} to ${formData.campaign}!`);
+    alert(`Thank you for your donation of ₹${formData.amount} to ${formData.campaign}!`);
     setShowDonationForm(false);
     setSelectedCampaign(null);
   };
@@ -24,9 +24,9 @@ const Donate = () => {
   };
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-IN', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'INR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -41,10 +41,10 @@ const Donate = () => {
       <div className="content-wrapper">
         {/* Header */}
         <div className="text-center page-header">
-          <h1 className="page-title">Support Our Community</h1>
+          <h1 className="page-title">Support St. Joseph's Community</h1>
           <p className="page-subtitle max-w-3xl mx-auto">
-            Your generous contributions help us build a stronger university, support current students, 
-            and create lasting impact for future generations.
+            Your generous contributions help us build a stronger St. Joseph's College, support current students in Chennai, 
+            and create lasting impact for future generations of Josephites.
           </p>
         </div>
 
@@ -81,10 +81,10 @@ const Donate = () => {
             <HeartIcon className="h-12 w-12 mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-4">Make a Quick Donation</h2>
             <p className="text-primary-100 mb-6">
-              Support our general fund to make an immediate impact across all university initiatives.
+              Support our general fund to make an immediate impact across all St. Joseph's College initiatives in Chennai.
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-6">
-              {[25, 50, 100, 250, 500].map(amount => (
+              {[500, 1000, 2500, 5000, 10000].map(amount => (
                 <button
                   key={amount}
                   onClick={() => {
@@ -93,7 +93,7 @@ const Donate = () => {
                   }}
                   className="bg-white text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
                 >
-                  ${amount}
+                  ₹{amount}
                 </button>
               ))}
             </div>

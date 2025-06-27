@@ -14,28 +14,28 @@ const Home = () => {
   const stats = [
     {
       icon: UsersIcon,
-      value: '25,000+',
+      value: '8,500+',
       label: 'Active Alumni',
       growth: '12%',
       iconColor: 'bg-blue-500'
     },
     {
       icon: GlobeAltIcon,
-      value: '75+',
-      label: 'Countries',
+      value: '25+',
+      label: 'Indian States',
       growth: '8%',
       iconColor: 'bg-green-500'
     },
     {
       icon: CalendarIcon,
-      value: '500+',
+      value: '150+',
       label: 'Events This Year',
       growth: '25%',
       iconColor: 'bg-purple-500'
     },
     {
       icon: BriefcaseIcon,
-      value: '1,200+',
+      value: '400+',
       label: 'Job Opportunities',
       growth: '30%',
       iconColor: 'bg-orange-500'
@@ -88,12 +88,12 @@ const Home = () => {
         <div className="container">
           <div className="text-center">
             <h1 className="heading-xl mb-6">
-              Welcome to AlumniConnect
+              Welcome to St. Joseph's Alumni Connect
             </h1>
             
             <p className="subtitle mb-12 max-w-3xl mx-auto">
               Where lifelong connections are made. Join our thriving community 
-              of graduates making an impact around the world.
+              of Josephites making an impact across Tamil Nadu and beyond.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -116,7 +116,7 @@ const Home = () => {
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="heading-lg mb-4">Our Growing Community</h2>
-            <p className="subtitle">Join thousands of alumni making a difference worldwide</p>
+            <p className="subtitle">Join thousands of Josephites making a difference across India</p>
           </div>
           
           <div className="grid-stats">
@@ -170,8 +170,8 @@ const Home = () => {
             <TrophyIcon className="h-16 w-16 mx-auto mb-6 text-blue-200" />
             <h2 className="text-4xl font-bold mb-6">Ready to Connect?</h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of alumni who are already part of our vibrant community. 
-              Build relationships, advance your career, and give back.
+              Join thousands of Josephites who are already part of our vibrant community. 
+              Build relationships, advance your career, and give back to St. Joseph's College.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/login" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">

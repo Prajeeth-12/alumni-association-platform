@@ -31,7 +31,7 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
                 <AcademicCapIcon className="h-5 w-5 text-white" />
               </div>
               <span className="font-semibold text-xl text-gray-900">
-                AlumniConnect
+                St. Joseph's Alumni
               </span>
             </Link>
           </div>
