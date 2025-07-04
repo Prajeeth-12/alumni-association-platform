@@ -1,40 +1,87 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../components/Form';
+import { useToast } from '../contexts/ToastContext';
 import { AcademicCapIcon } from '@heroicons/react/24/outline';
 
 const Login = ({ onLogin }) => {
   const [isLoginMode, setIsLoginMode] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const { success, error } = useToast();
 
-  const handleLoginSubmit = (formData) => {
-    // Simulate login process
-    console.log('Login data:', formData);
+  const handleLoginSubmit = async (formData) => {
+    setLoading(true);
     
-    // Simple validation - in real app, this would be API call
-    if (formData.email && formData.password) {
-      // Simulate successful login
-      onLogin({
-        email: formData.email,
-        name: formData.email.split('@')[0], // Simple name extraction
-      });
-    } else {
-      alert('Please fill in all fields');
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    try {
+      // Enhanced validation
+      if (!formData.email || !formData.password) {
+        throw new Error('Please fill in all fields');
+      }
+
+      if (!formData.email.includes('@')) {
+        throw new Error('Please enter a valid email address');
+      }
+
+      if (formData.password.length < 6) {
+        throw new Error('Password must be at least 6 characters long');
+      }
+
+      // Check demo credentials or allow any valid format
+      const isValidDemo = formData.email === 'demo@example.com' && formData.password === 'password123';
+      const isValidEmail = formData.email.includes('@') && formData.password.length >= 6;
+
+      if (isValidDemo || isValidEmail) {
+        success('Login successful! Welcome back.');
+        setTimeout(() => {
+          onLogin({
+            email: formData.email,
+            name: formData.email.split('@')[0], // Simple name extraction
+          });
+        }, 1000);
+      } else {
+        throw new Error('Invalid credentials. Try demo@example.com / password123');
+      }
+    } catch (err) {
+      error(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleRegisterSubmit = (formData) => {
-    // Simulate registration process
-    console.log('Registration data:', formData);
+  const handleRegisterSubmit = async (formData) => {
+    setLoading(true);
     
-    // Simple validation
-    if (formData.email && formData.password && formData.firstName && formData.lastName) {
-      // Simulate successful registration and auto-login
-      onLogin({
-        email: formData.email,
-        name: `${formData.firstName} ${formData.lastName}`,
-      });
-    } else {
-      alert('Please fill in all required fields');
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    try {
+      // Enhanced validation
+      if (!formData.email || !formData.password || !formData.firstName || !formData.lastName) {
+        throw new Error('Please fill in all required fields');
+      }
+
+      if (!formData.email.includes('@')) {
+        throw new Error('Please enter a valid email address');
+      }
+
+      if (formData.password.length < 6) {
+        throw new Error('Password must be at least 6 characters long');
+      }
+
+      success('Registration successful! Welcome to the community.');
+      setTimeout(() => {
+        onLogin({
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`,
+        });
+      }, 1000);
+    } catch (err) {
+      error(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,11 +112,13 @@ const Login = ({ onLogin }) => {
             <Form
               type="login"
               onSubmit={handleLoginSubmit}
+              loading={loading}
             />
           ) : (
             <Form
               type="register"
               onSubmit={handleRegisterSubmit}
+              loading={loading}
             />
           )}
 

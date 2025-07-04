@@ -184,9 +184,30 @@ const Directory = () => {
 
         {/* Results */}
         <div className="mb-6 flex items-center justify-between">
-          <p className="text-gray-600">
-            Showing {filteredAlumni.length} of {alumni.length} alumni
-          </p>
+          <div className="flex items-center space-x-4">
+            <p className="text-gray-600">
+              Showing {filteredAlumni.length} of {alumni.length} alumni
+            </p>
+            {searchTerm && (
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-500">Search results for:</span>
+                <span className="px-2 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                  "{searchTerm}"
+                </span>
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="text-sm text-blue-600 hover:text-blue-800"
+                >
+                  Clear
+                </button>
+              </div>
+            )}
+          </div>
+          {filteredAlumni.length === 0 && searchTerm && (
+            <p className="text-sm text-gray-500 italic">
+              No alumni found. Try adjusting your search terms.
+            </p>
+          )}
         </div>
 
         {/* Alumni Grid/List */}

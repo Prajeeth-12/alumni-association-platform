@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-const Form = ({ type, onSubmit, className = "" }) => {
+const Form = ({ type, onSubmit, loading = false, className = "" }) => {
   const [formData, setFormData] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,14 +13,7 @@ const Form = ({ type, onSubmit, className = "" }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      onSubmit(formData);
-      setIsSubmitting(false);
-      setFormData({});
-    }, 1000);
+    onSubmit(formData);
   };
 
   const renderLoginForm = () => (
@@ -79,10 +71,17 @@ const Form = ({ type, onSubmit, className = "" }) => {
       
       <button
         type="submit"
-        disabled={isSubmitting}
-        className="btn-primary w-full"
+        disabled={loading}
+        className={`btn-primary w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
-        {isSubmitting ? 'Signing in...' : 'Sign in'}
+        {loading ? (
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            Signing in...
+          </div>
+        ) : (
+          'Sign in'
+        )}
       </button>
     </form>
   );
@@ -196,10 +195,17 @@ const Form = ({ type, onSubmit, className = "" }) => {
       
       <button
         type="submit"
-        disabled={isSubmitting}
-        className="btn-primary w-full"
+        disabled={loading}
+        className={`btn-primary w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
-        {isSubmitting ? 'Creating Account...' : 'Create Account'}
+        {loading ? (
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            Creating Account...
+          </div>
+        ) : (
+          'Create Account'
+        )}
       </button>
     </form>
   );
@@ -303,10 +309,17 @@ const Form = ({ type, onSubmit, className = "" }) => {
       
       <button
         type="submit"
-        disabled={isSubmitting}
-        className="btn-primary w-full"
+        disabled={loading}
+        className={`btn-primary w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
-        {isSubmitting ? 'Processing Donation...' : 'Donate Now'}
+        {loading ? (
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            Processing Donation...
+          </div>
+        ) : (
+          'Donate Now'
+        )}
       </button>
     </form>
   );

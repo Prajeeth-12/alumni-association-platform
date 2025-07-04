@@ -75,6 +75,33 @@ const Donate = () => {
           </div>
         </div>
 
+        {/* Overall Progress Summary */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-12">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Overall Campaign Progress
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Together we're making a difference for St. Joseph's College Chennai
+            </p>
+            <div className="max-w-md mx-auto">
+              <div className="flex justify-between text-sm text-gray-600 mb-2">
+                <span>Raised: {formatCurrency(totalRaised)}</span>
+                <span>Goal: {formatCurrency(totalGoal)}</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-3">
+                <div 
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-300"
+                  style={{ width: `${Math.min((totalRaised / totalGoal) * 100, 100)}%` }}
+                ></div>
+              </div>
+              <p className="text-sm text-gray-600 mt-2">
+                {((totalRaised / totalGoal) * 100).toFixed(1)}% of overall goal achieved
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Quick Donation */}
         <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-8 mb-12 text-white">
           <div className="max-w-2xl mx-auto text-center">
